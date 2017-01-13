@@ -9,29 +9,54 @@ using Newtonsoft.Json.Converters;
 using Microsoft.CSharp;
 using Newtonsoft.Json.Linq;
 
+//foreach (KeyValuePair<string, string> entry in OpVals)
+//{
+//    Console.WriteLine(entry.Key + " " + entry.Value);
+//}
+
 namespace ErowidVoice {
     public class Program
     {
         public static void Main()
         {
-            Dictionary<string, int> OpVals = new Dictionary<string, int>();
+            Dictionary<string, string> OpVals = new Dictionary<string, string>();
+            List<string> IDs = new List<string>();
 
             scrapeOV(OpVals);
-            foreach (KeyValuePair<string, int> entry in OpVals)
-            {
-                Console.WriteLine(entry.Key + " " + entry.Value);
-            }
 
             string drugToSearch = "Mushrooms";
             string searchTerm = "voice";
-            int drugOpVal = OpVals[drugToSearch];
-            string url = "https://erowid.org/experiences/exp.cgi?S1=" + drugOpVal + "&Str=" + searchTerm + "&Cellar=1&ShowViews=0&Cellar=1&Start=0&Max=100000";
-            string source = getURLSource(url);
-            writeToFile(source);
+            
+            getIDs(drugToSearch, searchTerm, OpVals, IDs);
+
+            Random r = new Random();
+            string url = "https://erowid.org/experiences/exp.php?ID=" + IDs[r.Next(0, IDs.Count)];
+            string report = getURLSource(url);
+            report = report.Substring(report.IndexOf("<!-- Start Body -->"));
+            report = report.Substring(report.IndexOf(">") + 1);
+            report = report.Substring(0, report.IndexOf("<!-- End Body -->"));
+            report = report.Replace("<BR>", "");
+
+            writeToFile(report);
+
         }
 
+        static void getIDs(string drugToSearch, string searchTerm, Dictionary<string, string>  OpVals, List<string> IDs)
+        {
+            string drugOpVal = OpVals[drugToSearch];
+            string url = "https://erowid.org/experiences/exp.cgi?S1=" + drugOpVal + "&Str=" + searchTerm + "&Cellar=1&ShowViews=0&Cellar=1&Start=0&Max=100000";
+            string source = getURLSource(url);
 
-        static void scrapeOV(Dictionary<string, int> ov)
+            while (source.IndexOf("exp.php?ID=") != -1)
+            {
+                source = source.Substring(source.IndexOf("exp.php?ID="));
+                source = source.Substring(source.IndexOf("=") + 1);
+                string id = source.Substring(0, source.IndexOf("\""));
+                IDs.Add(id);
+            }
+        }
+
+        static void scrapeOV(Dictionary<string, string> ov)
         {
             //restrict to drug section
             string source = getURLSource("https://erowid.org/experiences/exp_search.cgi");
@@ -66,14 +91,13 @@ namespace ErowidVoice {
                 drugName = source.Substring(0, end);
 
                 if(drugName != "111__use_this_one_empty")
-                    ov.Add(drugName, val);
+                    ov.Add(drugName, valString);
             }
         }
 
         static void writeToFile(string content)
         {
-            StreamWriter file = new System.IO.StreamWriter("output.txt");
-            file.WriteLine(content);
+            System.IO.File.WriteAllText(@"output.txt", content);
         }
 
         static string getURLSource(string url)
