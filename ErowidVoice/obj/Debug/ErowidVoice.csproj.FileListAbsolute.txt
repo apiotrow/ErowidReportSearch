@@ -1,0 +1,18 @@
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.exe.config
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.csprojResolveAssemblyReference.cache
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.Properties.Resources.resources
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.csproj.GenerateResource.Cache
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.exe
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.pdb
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.exe
+D:\VSprojects\New folder\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.pdb
+D:\VSprojects\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.exe.config
+D:\VSprojects\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.exe
+D:\VSprojects\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.pdb
+D:\VSprojects\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.exe
+D:\VSprojects\ErowidVoice\ErowidVoice\bin\Debug\ErowidVoice.pdb
+D:\VSprojects\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.csprojResolveAssemblyReference.cache
+D:\VSprojects\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.Properties.Resources.resources
+D:\VSprojects\ErowidVoice\ErowidVoice\obj\Debug\ErowidVoice.csproj.GenerateResource.Cache
+D:\VSprojects\ErowidVoice\ErowidVoice\bin\Debug\Newtonsoft.Json.dll
+D:\VSprojects\ErowidVoice\ErowidVoice\bin\Debug\Newtonsoft.Json.xml
